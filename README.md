@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>Cynthia Mehul J</H3>
+<H3>212223240020</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>07.03.2025</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,12 +37,75 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```
+#import libraries
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+# Read the dataset
+df = pd.read_csv("C:/Users/admin/Downloads/Churn_Modelling.csv")
+print(df)
+
+# Finding Missing Values
+print(df.isnull().sum())
+
+# Check for Duplicates
+df.duplicated()
+
+# Detect Outliers
+print(df['EstimatedSalary'].describe())
+
+# Normalize the dataset
+scaler=MinMaxScaler()
+df_numeric = df.drop(columns=['Surname', 'Geography', 'Gender'])
+df1=pd.DataFrame(scaler.fit_transform(df_numeric))
+print(df1)
+
+# Split the dataset into input and output
+x = df.iloc[:, :-1] 
+y = df.iloc[:, -1]
+
+# Split the dataset for training and testing
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=0)
+
+# Print the training data and testing data
+print(x_train)
+print(len(x_train))
+print(x_test)
+print(len(x_test))
+```
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
 
+Reading the dataset: 
+
+![image](https://github.com/user-attachments/assets/5235939e-6a86-4b85-8724-f99558f5c56e)
+
+Finding Missing Values:
+
+![image](https://github.com/user-attachments/assets/07681ce8-e8ac-4615-88de-e4c84b3225c4)
+
+Check for Duplicates:
+
+![image](https://github.com/user-attachments/assets/3d153199-e7cc-4456-bfb3-6a7ba51c24fb)
+
+Detect Outliers:
+
+![image](https://github.com/user-attachments/assets/38a61889-df07-41d7-9e7c-2bcbf4d427f3)
+
+Normalize the dataset:
+
+![image](https://github.com/user-attachments/assets/e6482619-7ce1-4429-ad34-23ef0cbd9731)
+
+Print the training data and testing data:
+
+![image](https://github.com/user-attachments/assets/a86cc323-8312-408f-873a-e99ecaa50706)
+
+![image](https://github.com/user-attachments/assets/d44900f6-6e1a-4014-ba4f-71a95313f582)
 
 ## RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
